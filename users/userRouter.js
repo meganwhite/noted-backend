@@ -4,7 +4,7 @@ const Users = require('./userModel.js');
 const router = express.Router();
 
 //register a user
-router.post("/api/register",async(req,res) =>{
+router.post("/register",async(req,res) =>{
     const {body} = req;
     const hash = bcrypt.hashSync(body.password,12)
     body.password = hash
@@ -22,7 +22,8 @@ router.post("/api/register",async(req,res) =>{
 })
 
 // login
-router.post("/api/login",async(req,res) => {
+router.post("/login",async(req,res) => {
+    const {body} = req
     try {
         const user = await Users.login({username: body.username})
         if(user) {
