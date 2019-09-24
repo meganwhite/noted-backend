@@ -12,7 +12,7 @@ module.exports = {
       directory: './data/migrations'
     },
     seeds: {
-      diretory: '.data/seeds'
+      directory: './data/seeds'
     },
     pool: {
       afterCreate: (conn, done) => {
@@ -21,5 +21,5 @@ module.exports = {
       },
     },
   }, 
-  
+
 };
