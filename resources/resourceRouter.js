@@ -32,14 +32,13 @@ router.post("/", async(req,res) => {
 // get all resources for a user
 // endpoint should be something like "/resources/:userId"
 // need a way to get the id of the user who is logged in
-// then should only return resources where the user_id is equal to the :userId
-// start with a dummy route -- return db where user_id==1
 
 router.get("/:userId",async(req,res) => {
-    const user_id = 1;
+    const user_id = req.params.userId;
     try {
         const result = await Resources.getResourcesByUser(user_id);
         res.status(200).json(result)
+        console.log(user_id)
     } catch (err) {
         res.status(500).json({message:'Could not get resources for user'})
     }
