@@ -12,7 +12,7 @@ router.get("/",async(req,res) => {
     }
 })
 
-// create a resource
+// create a resource -- need to send user id in post request in front end
 router.post("/", async(req,res) => {
     const {body} = req;
     try {
@@ -30,6 +30,20 @@ router.post("/", async(req,res) => {
 })
 
 // get all resources for a user
+// endpoint should be something like "/resources/:userId"
+// need a way to get the id of the user who is logged in
+// then should only return resources where the user_id is equal to the :userId
+// start with a dummy route -- return db where user_id==1
+
+router.get("/:userId",async(req,res) => {
+    const user_id = 1;
+    try {
+        const result = await Resources.getResourcesByUser(user_id);
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(500).json({message:'Could not get resources for user'})
+    }
+})
 
 // edit a resource
 
