@@ -1,4 +1,6 @@
 const db = require("../data/db-config.js")
+const jwt = require("jsonwebtoken");
+const {jwtKey} = require("../auth/authenticate");
 
 const findById = id => {
     return db("users")
@@ -24,9 +26,21 @@ const getUsers = () => {
     return db("users")
 }
 
+const generateToken = user => {
+    const payload = {
+        subject: user.id,
+        username: user.username
+    };
+    const option = {
+        expiresIn: "1d"
+    }
+    return jwt.sign(payload,jwtKey,option)
+}
+
 module.exports = {
     findById,
     createUser,
     login,
-    getUsers
+    getUsers,
+    generateToken
 }
