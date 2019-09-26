@@ -30,9 +30,6 @@ router.post("/", async(req,res) => {
 })
 
 // get all resources for a user
-// endpoint should be something like "/resources/:userId"
-// need a way to get the id of the user who is logged in
-
 router.get("/:userId",async(req,res) => {
     const user_id = req.params.userId;
     try {

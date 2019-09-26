@@ -1,4 +1,7 @@
 // Update with your config settings.
+// heroku will add the DATABASE_URL environment variable
+// during development it would connect to your local postgres installation
+const productionConnection = process.env.DATABASE_URL || "postgres://localhost/postgres";
 
 module.exports = {
 
@@ -20,6 +23,21 @@ module.exports = {
         conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
       },
     },
-  }, 
+  },
+  
+  production: {
+    client: "pg", // need to npm i pg
+    connection: productionConnection,
+    migrations: {
+      directory: "./data/migrations"
+    },
+    seeds: {
+      directory: "./data/seeds"
+    },
+    pool: {
+      min: 2,
+      max: 100 // this is to ensure the migration will not time out
+    }
+  }
 
 };
