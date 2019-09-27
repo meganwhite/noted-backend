@@ -59,5 +59,17 @@ router.get("/", async(req,res) => {
     }
 })
 
+// get user by Id
+router.get("/:userId", async(req,res) => {
+    const user_id = req.params.userId;
+    try {
+        const users = await Users.getUserById(user_id)
+        res.status(200).json(users)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message:'Could not retrieve user'})
+    }
+})
+
 
 module.exports = router

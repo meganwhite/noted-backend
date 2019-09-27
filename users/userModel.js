@@ -26,6 +26,11 @@ const getUsers = () => {
     return db("users")
 }
 
+const getUserById = (user_id) => {
+    return db("users")
+        .where("id",user_id)
+}
+
 const generateToken = user => {
     const payload = {
         subject: user.id,
@@ -42,5 +47,6 @@ module.exports = {
     createUser,
     login,
     getUsers,
-    generateToken
+    generateToken,
+    getUserById
 }
