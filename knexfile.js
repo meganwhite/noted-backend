@@ -1,7 +1,7 @@
 // Update with your config settings.
 // heroku will add the DATABASE_URL environment variable
 // during development it would connect to your local postgres installation
-const productionConnection = process.env.DATABASE_URL || "postgres://localhost/postgres";
+const productionConnection = process.env.DATABASE_URL || "postgres://vkxhpkyuxgyvie:0557ae5a3bd67114eb6cfc9b8b9704b0409100e70de725ef07e02b3e9af6ea49@ec2-174-129-18-42.compute-1.amazonaws.com:5432/dbbq097ldefp5i"
 
 module.exports = {
 
