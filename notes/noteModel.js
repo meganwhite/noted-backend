@@ -1,14 +1,22 @@
 const db = require('../data/db-config.js');
 
-function find() {
+function getNotes() {
     return db('notes')
 }
 
-function add(note) {
+function addNote(note) {
     return db('notes').insert(note)
 }
 
-module.exports = {
-    find,
-    add
+const getNotesByResource = (resource_id) => {
+    return db("notes")
+        .where("resource_id",resource_id)
+
 }
+
+module.exports = {
+    getNotes,
+    addNote,
+    getNotesByResource
+}
+
