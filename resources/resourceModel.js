@@ -14,9 +14,22 @@ const getResourcesByUser = (user_id) => {
 
 }
 
+function findResourceById(id) {
+    return db('resources')
+    .where("id",id)
+    .first()
+}
+
+const deleteResource = id => {
+    return db("resources")
+        .where(id,"id")
+        .del()
+}
+
 
 module.exports = {
     getResources,
     addResource,
-    getResourcesByUser
+    getResourcesByUser,
+    deleteResource
 }

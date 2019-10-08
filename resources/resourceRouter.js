@@ -30,7 +30,7 @@ router.post("/", async(req,res) => {
 })
 
 // get all resources for a user
-router.get("/:userId",async(req,res) => {
+router.get("/users/:userId",async(req,res) => {
     const user_id = req.params.userId;
     try {
         const result = await Resources.getResourcesByUser(user_id);
@@ -44,6 +44,17 @@ router.get("/:userId",async(req,res) => {
 // edit a resource
 
 // delete a resource
+router.delete("/:id",async(req,res) => {
+    const id = req.params;
+    try {
+        const result = await Resources.deleteResource(id);
+        res.status(200).json(result)
+        console.log(id)
+    }
+    catch (err) {
+        res.status(500).json({message:'Could not delete resource'})
+    }
+})
 
 
 module.exports = router
