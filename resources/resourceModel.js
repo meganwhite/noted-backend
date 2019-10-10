@@ -26,10 +26,18 @@ const deleteResource = id => {
         .del()
 }
 
+const deleteAllBullets = id => {
+    return db("notes")
+        .where(id,"resource_id")
+        .del()
+
+}
+
 
 module.exports = {
     getResources,
     addResource,
     getResourcesByUser,
-    deleteResource
+    deleteResource,
+    deleteAllBullets
 }

@@ -47,7 +47,7 @@ router.get("/users/:userId",async(req,res) => {
 router.delete("/:id",async(req,res) => {
     const id = req.params;
     try {
-        const result = await Resources.deleteResource(id);
+        const result = await Resources.deleteResource(id).deleteAllBullets(id);
         res.status(200).json(result)
         console.log(id)
     }
